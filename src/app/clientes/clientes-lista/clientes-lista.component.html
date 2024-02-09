@@ -1,0 +1,50 @@
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Listagem</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Clientes
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a [routerLink]="['/clientes-form']" class="btn btn-primary">
+                                <i class="fa fa-plus"></i>
+                                Novo Cliente
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Cpf</th>
+                                <th>Data Cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cliente of clientes">
+                                <td>{{ cliente.id }}</td>
+                                <td>{{ cliente.nome }}</td>
+                                <td>{{ cliente.cpf }}</td>
+                                <td>{{ cliente.dataCadastro }}</td>
+                                <td>
+                                    <a [routerLink]="['/clientes', cliente.id, 'editar']"
+                                        class="btn btn-primary btn-sm">Editar</a>
+                                    <button class="btn btn-danger btn-sm">Remover</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

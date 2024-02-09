@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Cliente } from '../cliente';
 import { ClientesService } from '../../clientes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-form',
@@ -14,7 +15,7 @@ export class ClientesFormComponent implements OnInit {
   success: boolean = false;
   errors: String[];
 
-  constructor(private service: ClientesService) {
+  constructor(private service: ClientesService, private router: Router) {
     this.cliente = new Cliente();
     this.errors = [];
   }
