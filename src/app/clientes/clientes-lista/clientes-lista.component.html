@@ -12,7 +12,7 @@
                             Clientes
                         </div>
                         <div class="col-md-6 text-right">
-                            <a [routerLink]="['/clientes-form']" class="btn btn-primary">
+                            <a [routerLink]="['/clientes-form']" class="btn btn-success">
                                 <i class="fa fa-plus"></i>
                                 Novo Cliente
                             </a>
@@ -36,10 +36,16 @@
                                 <td>{{ cliente.nome }}</td>
                                 <td>{{ cliente.cpf }}</td>
                                 <td>{{ cliente.dataCadastro }}</td>
-                                <td>
-                                    <a [routerLink]="['/clientes', cliente.id, 'editar']"
-                                        class="btn btn-primary btn-sm">Editar</a>
-                                    <button class="btn btn-danger btn-sm">Remover</button>
+                                <td class="text-center">
+                                    <a [routerLink]="['/clientes-form', cliente.id]"
+                                        class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                        Editar
+                                    </a>
+                                    <button class="btn btn-danger btn-sm ml-1">
+                                        <i class="fa fa-trash"></i>
+                                        Remover
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>

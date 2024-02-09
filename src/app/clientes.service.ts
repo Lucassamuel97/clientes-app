@@ -14,6 +14,10 @@ export class ClientesService {
     return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 
+  atualizar(cliente: Cliente) : Observable<any>{ 
+    return this.http.put<Cliente>(`http://localhost:8080/api/clientes/${cliente.id}`, cliente);
+  }
+  
   getCliente() : Cliente{
     let cliente: Cliente = new Cliente();
     cliente.nome = "Fulano de Tal";
@@ -26,20 +30,7 @@ export class ClientesService {
     return this.http.get<Cliente[]>('http://localhost:8080/api/clientes');
   }
 
-  getClientes2() : Cliente[]{
-    let clientes: Cliente[] = [];
-
-    let cliente: Cliente = new Cliente();
-    cliente.nome = "Fulano de Tal";
-    cliente.cpf = "88888888888";
-    clientes.push(cliente);
-
-    let cliente2: Cliente = new Cliente();
-    cliente2.nome = "Ciclano de Tal";
-    cliente2.cpf = "99999999999";
-    clientes.push(cliente2);
-
-    return clientes;
-  
+  getClienteById(id: number) : Observable<Cliente>{
+    return this.http.get<any>(`http://localhost:8080/api/clientes/${id}`);
   }
 }
