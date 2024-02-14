@@ -5,6 +5,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensageSuccess">
+                {{mensageSuccess}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{mensagemErro}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -37,12 +47,12 @@
                                 <td>{{ cliente.cpf }}</td>
                                 <td>{{ cliente.dataCadastro }}</td>
                                 <td class="text-center">
-                                    <a [routerLink]="['/clientes-form', cliente.id]"
-                                        class="btn btn-primary btn-sm">
+                                    <a [routerLink]="['/clientes-form', cliente.id]" class="btn btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                         Editar
                                     </a>
-                                    <button class="btn btn-danger btn-sm ml-1">
+                                    <button class="btn btn-danger btn-sm ml-1" data-toggle="modal"
+                                        data-target="#modalDelecao" (click)="preparaDelecao(cliente)">
                                         <i class="fa fa-trash"></i>
                                         Remover
                                     </button>
@@ -54,3 +64,22 @@
             </div>
         </div>
     </div>
+
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação de Exclusão</h4>
+                </div>
+                <div class="modal-body" *ngIf="clienteSelecionado">
+                    <p>Tem certeza que deseja excluir o(a) cliente <b>{{ clienteSelecionado.nome }}</b>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="deletarCliente()">Sim</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
