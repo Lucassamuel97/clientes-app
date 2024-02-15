@@ -1,1 +1,71 @@
-<p>servico-prestado-lista works!</p>
+<h1 class="mt-4">Serviço</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="contairner">
+    <form #consultaForm="ngForm" (submit)="consultar()">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Nome cliente</label>
+                <input type="text" name="nome" [(ngModel)]="nome" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+                <label>Mês</label>
+                <select name="mes" [(ngModel)]="mes" class="form-control">
+                    <option value="">Selecione</option>
+                    <option *ngFor="let mes of meses" [value]="mes">
+                        {{mes}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search"></i>
+                    Pesquisar
+                </button>
+                <button class="btn btn-success ml-3" [routerLink]="['/servico-prestado-form']" type="button">
+                    <i class="fa fa-plus"></i>
+                    Novo
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <div class="alert alert-warning" *ngIf="message">
+                Nenhum registro encontrado.
+            </div>
+        </div>
+        <div class="col-md-12 mt-4" *ngIf="lista.length > 0 "> 
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let servico of lista">
+                        <td>{{servico.descricao}}</td>
+                        <td>{{servico.valor | currency}}</td>
+                        <td>{{servico.data}}</td>
+                        <td>{{servico.cliente.nome}}</td>
+                        <td>
+                            <button class="btn btn-primary" type="button">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

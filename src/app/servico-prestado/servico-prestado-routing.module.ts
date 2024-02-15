@@ -5,7 +5,7 @@ import { ServicoPrestadoListaComponent } from './servico-prestado-lista/servico-
 
 const routes: Routes = [
   { path: 'servico-prestado-form', component: ServicoPrestadoFormComponent },
-  { path: 'servico-prestado-listagem', component: ServicoPrestadoListaComponent }
+  { path: 'servico-prestado-lista', component: ServicoPrestadoListaComponent }
 ];
 
 @NgModule({
