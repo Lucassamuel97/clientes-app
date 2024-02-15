@@ -15,6 +15,8 @@ export class ServicoPrestadoFormComponent {
   clientes: Cliente[] = [];
   servico: ServicoPrestado;
   standalone: any;
+  success: boolean = false;
+  errors!: String[];
 
   constructor(private clienteService: ClientesService, private service: ServicoPrestadoService){
     this.servico = new ServicoPrestado();
@@ -27,10 +29,13 @@ export class ServicoPrestadoFormComponent {
   }
 
   onSubmit(){
-    this.service
-    .salvar(this.servico)
-    .subscribe(response => {
-      console.log(response);
-    })
+    this.service.salvar(this.servico).subscribe(response => {
+      this.success = true;
+      this.errors = [];
+      this.servico = new ServicoPrestado();
+    }, errorResponse => {
+      this.success = false;
+      this.errors = errorResponse.error.errors;
+    });
   }
 }
