@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="cliente">Cliente</label>
-                    <select name="" id="cliente" class="form-control" [(ngModel)]="servico.idcliente" [ngModelOptions]="{standalone: true}" >
+                    <label>Cliente</label>
+                    <select class="form-control" [(ngModel)]="servico.idCliente" [ngModelOptions]="{standalone: true}" >
                         <option value="">Selecione</option>
                         <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
                             {{cliente.nome}}
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <input type="text" [ngModel]="servico.descricao" name="descricao" class="form-control" id="descricao">
+                    <input type="text" [(ngModel)]="servico.descricao" name="descricao" class="form-control" id="descricao">
                 </div>
             </div>
         </div>
@@ -30,14 +30,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="data">Data</label>
-                    <input type="text" [ngModel]="servico.data" name="data" class="form-control" id="inputdata">
+                    <label for="inputdata">Data</label>
+                    <input type="text" [(ngModel)]="servico.data" name="data" class="form-control" id="inputdata">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="preco">Preço:</label>
-                    <input type="text" [ngModel]="servico.preco" name="preco" class="form-control" id="preco">
+                    <input type="text" [(ngModel)]="servico.preco" name="preco" class="form-control" id="preco">
                 </div>
             </div>
         </div>
