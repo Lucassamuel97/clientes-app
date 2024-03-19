@@ -15,6 +15,10 @@
                                     Login e/ou Senha incorreto(a).
                                 </div>
 
+                                <div class="alert alert-danger" *ngIf="mensagemSucesso">
+                                    Cadastro realizado com sucesso! Efetue o login.
+                                </div>
+
                                 <form #loginForm="ngForm" (submit)="onSubmit()">
                                     <div class="form-group">
                                         <label class="small mb-1">Login</label>
@@ -29,7 +33,7 @@
                                             Login
                                         </button>
 
-                                        <button class="btn btn-success" type="button" *ngIf="cadastrando">
+                                        <button class="btn btn-success" type="button" (click)="cadastrar()" *ngIf="cadastrando">
                                             <i class="fa fa-save"></i>
                                             Cadastrar
                                         </button>
